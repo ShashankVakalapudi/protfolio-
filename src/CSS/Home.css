@@ -67,3 +67,44 @@
   gap: 1.5rem;
   justify-content: center; /* ensures icons are centered */
 }
+/* Typing cursor */
+.typing-cursor {
+  display: inline-block;
+  width: 2px;
+  height: 1em;
+  background: var(--accent);
+  margin-left: 4px;
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  50% { opacity: 0; }
+}
+
+/* Info cards hover / touch */
+.info-card {
+  transition: all 0.35s ease;
+  cursor: pointer;
+}
+
+.info-card:hover {
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  color: #000;
+  transform: translateY(-4px);
+  box-shadow: 0 0 18px rgba(0,255,200,0.45);
+}
+
+.info-card:hover p,
+.info-card:hover strong {
+  color: #000;
+}
+
+/* Social icons hover glow */
+.quick-link-img {
+  transition: all 0.3s ease;
+}
+
+.quick-link-img:hover {
+  transform: translateY(-6px) scale(1.08);
+  box-shadow: 0 0 22px rgba(0,255,200,0.6);
+}

@@ -96,3 +96,61 @@
 .edu-details {
   color: var(--text-muted);
 }
+.section-header {
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+  font-size: 1.6rem;
+  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+/* Social badges */
+.social-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  margin-top: 0.5rem;
+}
+
+.social-badges img {
+  transition: transform 0.3s ease;
+}
+
+.social-badges img:hover {
+  transform: scale(1.08);
+}
+
+/* Tech stack */
+.tech-stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-top: 0.8rem;
+}
+
+.tech-stack img {
+  transition: transform 0.3s ease;
+}
+
+.tech-stack img:hover {
+  transform: translateY(-3px);
+}
+
+/* Publication */
+.publication-card {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 0 15px rgba(0,255,200,0.06);
+}
+
+.publication-title {
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+.publication-meta {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+}
