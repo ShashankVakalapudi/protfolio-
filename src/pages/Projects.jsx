@@ -4,31 +4,52 @@ import { Github, ExternalLink } from "lucide-react";
 
 const PROJECTS = [
   {
-    title: "🔐 Graphical Password Authentication",
+    title: "Graphical Password Authentication",
     desc: "Cybersecurity-focused system replacing text passwords with image patterns to mitigate brute force and phishing. Features face-detection gating and automated email alerts.",
     ss: "", 
     tech: ["Python", "Django", "SQLite", "OpenCV", "SMTP"],
-    code: "https://github.com/ShashankVakalapudi",
+    code: "https://github.com/ShashankVakalapudi/Graphical-Password-Authentication.git",
   },
   {
-    title: "✅ My Task App - SaaS Manager",
-    desc: "Multi-user task management application with JWT authentication, full CRUD functionality, and strict user-level data isolation.",
+    title: "Andhra Angel Networks (AAN) Web Portal",
+    desc: "Developed a professional corporate web platform connecting entrepreneurs with investors. Implemented dynamic event showcases, categorized partnerships (School, College, Government), interactive galleries, logo scrollers, and inquiry workflows aligned with startup ecosystem growth.",
+    ss: "", 
+    tech: ["PHP", "HTML5", "CSS3", "JavaScript"],
+    code: "https://github.com/ShashankVakalapudi/ Graphical-Password-Authentication.git",
+  },
+  {
+    title: "Localhost Voice Assistant",
+    desc: "Built a Python-based voice assistant capable of executing system commands, opening applications, and playing media through voice interaction.",
     ss: "",
-    tech: ["MongoDB", "Express.js", "React", "Node.js", "Tailwind CSS"],
+    tech: ["Python","Speech Recognition Libraries"],
     code: "https://github.com/ShashankVakalapudi",
   },
   {
-    title: "🏠 WELIVING - Housing Platform",
-    desc: "High-performance frontend for a travel/housing service featuring segmented flows, animated counters, and testimonial carousels.",
+    title: "Revision App (147 Revision Master)",
+    desc: "Spaced-repetition productivity application that automates revision schedules (Day 1, Day 4, Day 7). Enabled real-time data synchronization, secure authentication, and browser notifications to improve learning consistency.",
     ss: "",
     tech: ["HTML5", "Tailwind CSS", "JavaScript", "AOS"],
     code: "https://github.com/ShashankVakalapudi",
   },
   {
-    title: "🎓 TechLearn Academy LMS",
-    desc: "Scalable LMS with normalized relational database schema and MVC architecture for managing courses, instructors, and students.",
+    title: "My Task App – Professional Task Manager",
+    desc: " Secure multi-user SaaS task management application with JWT-based authentication, full CRUD functionality, strict user-level data isolation, and backend input validation.",
     ss: "",
-    tech: ["ASP.NET Core", "C#", "MySQL", "Entity Framework"],
+    tech: ["MongoDB", "Express.js", "React, Node.js", "Tailwind CSS", "JWT"],
+    code: "https://github.com/ShashankVakalapudi",
+  },
+  {
+    title: "WELIVING – Housing Travel Platform (Freelance) ",
+    desc: "Designed and developed a high-performance frontend featuring segmented service flows (WECATION / WEHOUSING), animated counters, testimonial carousels, responsive navigation, and lead-generation forms.",
+    ss: "",
+    tech: ["HTML5", "Tailwind CSS", "JavaScript", "AOS", "Lucide Icons"],
+    code: "https://github.com/ShashankVakalapudi",
+  },
+  {
+    title: "TechLearn Academy – LMS Database Project",
+    desc: "Designed a scalable LMS with a normalized relational database schema, enforced referential integrity, and implemented MVC architecture for course,instructor, and student management. ",
+    ss: "",
+    tech: ["ASP.NET Core MVC", "C", "MySQL", "Entity Framework Core"],
     code: "https://github.com/ShashankVakalapudi",
   }
 ];

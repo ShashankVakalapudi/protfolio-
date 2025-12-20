@@ -23,7 +23,7 @@ export default function App() {
         </Routes>
       </main>
       <footer className="footer">
-        © {new Date().getFullYear()} Vaishnavi Yenumula — Built with React
+        © {new Date().getFullYear()} Shashank Vakalapudi — Built with React
       </footer>
     </div>
   )
