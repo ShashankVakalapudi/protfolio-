@@ -1,6 +1,7 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
+import "../CSS/Navbar.css"; 
 
 const links = [
   { label: "Home", to: "/" },
@@ -23,36 +24,28 @@ const roles = [
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
-  const [showButton, setShowButton] = useState(false);
-  const navRef = useRef(null);
-  const linksRef = useRef(null);
 
   /* ===== Typing Animation State ===== */
   const [roleIndex, setRoleIndex] = useState(0);
   const [text, setText] = useState("");
   const [isDeleting, setIsDeleting] = useState(false);
 
-  const typingSpeed = 80;
-  const deletingSpeed = 50;
-  const pauseDuration = 1200;
-
   useEffect(() => {
     const currentRole = roles[roleIndex];
-
     let timeout;
 
     if (!isDeleting && text.length < currentRole.length) {
       timeout = setTimeout(() => {
         setText(currentRole.substring(0, text.length + 1));
-      }, typingSpeed);
+      }, 80);
     } 
     else if (!isDeleting && text === currentRole) {
-      timeout = setTimeout(() => setIsDeleting(true), pauseDuration);
+      timeout = setTimeout(() => setIsDeleting(true), 1200);
     } 
     else if (isDeleting && text.length > 0) {
       timeout = setTimeout(() => {
         setText(currentRole.substring(0, text.length - 1));
-      }, deletingSpeed);
+      }, 50);
     } 
     else if (isDeleting && text.length === 0) {
       setIsDeleting(false);
@@ -62,64 +55,11 @@ export default function Navbar() {
     return () => clearTimeout(timeout);
   }, [text, isDeleting, roleIndex]);
 
-  /* ===== Responsive Menu Overflow ===== */
-  const checkOverflow = () => {
-    if (!navRef.current || !linksRef.current) return;
-    setShowButton(linksRef.current.scrollWidth > navRef.current.offsetWidth);
-  };
-
-  useEffect(() => {
-    checkOverflow();
-    window.addEventListener("resize", checkOverflow);
-    return () => window.removeEventListener("resize", checkOverflow);
-  }, []);
-
   return (
     <>
-      {/* Cursor Animation */}
-      <style>
-        {`
-          .typing-text {
-            font-size: 0.75rem;
-            color: var(--accent);
-            font-weight: 500;
-            white-space: nowrap;
-          }
-
-          .cursor {
-            display: inline-block;
-            margin-left: 2px;
-            width: 1px;
-            height: 0.9em;
-            background-color: var(--accent);
-            animation: blink 1s steps(2, start) infinite;
-          }
-
-          @keyframes blink {
-            to {
-              visibility: hidden;
-            }
-          }
-        `}
-      </style>
-
-      <nav
-        ref={navRef}
-        style={{
-          position: "sticky",
-          top: 0,
-          zIndex: 100,
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
-          padding: "1rem 2rem",
-          borderBottom: "1px solid rgba(255,255,255,0.1)",
-          background: "rgba(0,0,0,0.6)",
-          backdropFilter: "blur(10px)",
-        }}
-      >
+      <nav className="nav">
         {/* LEFT SECTION */}
-        <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+        <div className="nav-left">
           <motion.div
             initial={{ scale: 0 }}
             animate={{ scale: 1 }}
@@ -128,24 +68,12 @@ export default function Navbar() {
             <img
               src="/logo VS.png"
               alt="Logo"
-              style={{ height: "3rem", width: "auto" }}
+              className="nav-logo-img"
             />
           </motion.div>
 
-          <div style={{ display: "flex", flexDirection: "column" }}>
-            <h1
-              style={{
-                margin: 0,
-                fontSize: "1.8rem",
-                fontWeight: "bold",
-                lineHeight: "1",
-                color: "white",
-              }}
-            >
-              Shashank Vakalapudi
-            </h1>
-
-            {/* Typing Animation */}
+          <div className="nav-name">
+            <h1>Shashank Vakalapudi</h1>
             <div className="typing-text">
               {text}
               <span className="cursor" />
@@ -153,54 +81,27 @@ export default function Navbar() {
           </div>
         </div>
 
-        {/* DESKTOP LINKS */}
-        <div
-          ref={linksRef}
-          style={{
-            display: showButton ? "none" : "flex",
-            gap: "2rem",
-            alignItems: "center",
-            flexGrow: 1,
-            justifyContent: "center",
-          }}
-        >
+        {/* DESKTOP LINKS - Hidden on mobile via CSS */}
+        <div className="nav-links desktop-links">
           {links.map((l) => (
             <NavLink
               key={l.to}
               to={l.to}
               end
-              style={{
-                fontSize: "0.95rem",
-                textDecoration: "none",
-                color: "white",
-                fontWeight: 500,
-              }}
+              className={({ isActive }) => (isActive ? "nav-link active" : "nav-link")}
             >
               {({ isActive }) => (
                 <motion.div
-                  whileHover={{
-                    scale: 1.1,
-                    color: "var(--accent)",
-                    textShadow: "0 0 8px var(--accent)",
-                  }}
-                  transition={{ duration: 0.3 }}
-                  style={{ display: "flex", flexDirection: "column", alignItems: "center" }}
+                  whileHover={{ scale: 1.1 }}
+                  className="nav-link-content"
                 >
-                  <motion.span
-                    animate={{ color: isActive ? "var(--accent)" : "white" }}
-                  >
+                  <span style={{ color: isActive ? "var(--accent)" : "white" }}>
                     {l.label}
-                  </motion.span>
+                  </span>
                   {isActive && (
                     <motion.div
                       layoutId="underline"
-                      style={{
-                        width: "70%",
-                        height: "2px",
-                        marginTop: "4px",
-                        backgroundColor: "var(--accent)",
-                        boxShadow: "0 0 6px var(--accent)",
-                      }}
+                      className="underline"
                     />
                   )}
                 </motion.div>
@@ -209,59 +110,33 @@ export default function Navbar() {
           ))}
         </div>
 
-        {/* MOBILE MENU BUTTON */}
-        {showButton && (
+        {/* MOBILE MENU BUTTON - Visible on mobile via CSS */}
+        <div className="mobile-btn-container">
           <button
             onClick={() => setIsOpen(!isOpen)}
-            style={{
-              background: "none",
-              border: "none",
-              color: "#fff",
-              fontSize: "1.8rem",
-              cursor: "pointer",
-            }}
+            className="mobile-toggle-btn"
+            aria-label="Toggle menu"
           >
             {isOpen ? "✕" : "☰"}
           </button>
-        )}
+        </div>
       </nav>
 
-      {/* MOBILE MENU */}
+      {/* MOBILE MENU OVERLAY */}
       <AnimatePresence>
-        {isOpen && showButton && (
+        {isOpen && (
           <motion.div
-            initial={{ opacity: 0, y: -15 }}
+            initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -15 }}
-            style={{
-              position: "fixed",
-              top: 0,
-              left: 0,
-              width: "100%",
-              height: "100vh",
-              background: "rgba(0,0,0,0.95)",
-              backdropFilter: "blur(12px)",
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-              paddingTop: "4rem",
-              zIndex: 9999,
-            }}
+            exit={{ opacity: 0, y: -20 }}
+            className="mobile-dropdown"
           >
             {links.map((l) => (
               <NavLink
                 key={l.to}
                 to={l.to}
                 onClick={() => setIsOpen(false)}
-                style={{
-                  color: "#fff",
-                  textDecoration: "none",
-                  padding: "1rem 0",
-                  width: "100%",
-                  textAlign: "center",
-                  fontSize: 18,
-                  borderBottom: "1px solid rgba(255,255,255,0.05)",
-                }}
+                className="mobile-link"
               >
                 {l.label}
               </NavLink>

@@ -1,4 +1,6 @@
-/* ---------- Header: smaller, left-aligned, no big gaps ---------- */
+/* src/CSS/Skills.css */
+
+/* ---------- Header ---------- */
 .skills-header {
   text-align: left;
   margin: 10px 0 12px 4%;
@@ -28,7 +30,7 @@
   padding: 0;
 }
 
-/* ---------- Orb area: narrower margins and reduced height ---------- */
+/* ---------- Orb area ---------- */
 .skills-stage {
   position: relative;
   width: 94%;
@@ -41,7 +43,6 @@
   overflow: hidden;
 }
 
-/* Shrink the orbs themselves (logo + text) */
 .skill-circle {
   position: absolute;
   width: 68px;
@@ -73,12 +74,13 @@
   padding: 0;
 }
 
-/* ---------- Skills Table: unchanged from original ---------- */
+/* ---------- Skills Table ---------- */
 .skills-table {
   margin-top: 50px;
   display: flex;
   flex-direction: column;
   gap: 40px;
+  padding: 0 1rem; /* Added safety padding */
 }
 
 .skills-row {
@@ -114,4 +116,16 @@
   color: #b0b0b0;
   margin-bottom: 6px;
   transition: color 0.2s, transform 0.2s;
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 768px) {
+  .skills-stage {
+    height: 300px; /* Smaller stage on mobile */
+  }
+  
+  .skill-box {
+    width: 100%; /* Full width on small screens */
+    max-width: 350px;
+  }
 }

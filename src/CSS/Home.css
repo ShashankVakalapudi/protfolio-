@@ -1,3 +1,5 @@
+/* src/CSS/Home.css */
+
 .home-section {
   min-height: 100vh;
   width: 100%;
@@ -9,6 +11,7 @@
   padding: 3rem 2rem 1rem;
   background: radial-gradient(circle at 30% 30%, rgba(0,255,200,0.08), transparent 80%);
   color: #fff;
+  overflow-x: hidden; /* Prevent horizontal scroll */
 }
 
 .home-top {
@@ -22,69 +25,120 @@
 }
 
 /* Photo */
-.photo-container { position: relative; flex: 0 0 380px; display: flex; justify-content: center; align-items: center; z-index: 1;}
-.photo-ring { position: absolute; width: 330px; height: 330px; border-radius: 50%; border: 2px dashed var(--accent); opacity: 0.3; }
-.photo-frame { position: relative; border-radius: 50%; overflow: hidden; width: 300px; height: 300px; box-shadow: 0 0 45px rgba(0,255,200,0.25); border: 3px solid var(--accent); z-index: 1; }
-.profile-photo { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; }
+.photo-container { 
+  position: relative; 
+  flex: 0 0 380px; 
+  display: flex; 
+  justify-content: center; 
+  align-items: center; 
+  z-index: 1;
+}
+
+.photo-ring { 
+  position: absolute; 
+  width: 330px; 
+  height: 330px; 
+  border-radius: 50%; 
+  border: 2px dashed var(--accent); 
+  opacity: 0.3; 
+}
+
+.photo-frame { 
+  position: relative; 
+  border-radius: 50%; 
+  overflow: hidden; 
+  width: 300px; 
+  height: 300px; 
+  box-shadow: 0 0 45px rgba(0,255,200,0.25); 
+  border: 3px solid var(--accent); 
+  z-index: 1; 
+}
+
+.profile-photo { 
+  width: 100%; 
+  height: 100%; 
+  object-fit: cover; 
+  border-radius: 50%; 
+}
 
 /* Info Section */
-.home-info { flex: 1; min-width: 360px; max-width: 700px; display: flex; flex-direction: column; justify-content: center; }
-.home-title { font-size: 3rem; font-weight: 700; line-height: 1.2; margin-bottom: 0.4rem; }
-.home-name { background: linear-gradient(90deg, var(--accent), var(--accent-2), var(--accent)); -webkit-background-clip: text; color: transparent; background-size: 200%; display: inline-block; }
-.typing-effect { font-size: 1.2rem; color: rgba(255,255,255,0.85); margin-top: 0.4rem; max-width: 95%; display: inline-block; overflow: hidden; white-space: nowrap; border-right: 0.15em solid var(--accent); animation: typing 3.5s steps(40,end) forwards, blink .8s infinite; }
+.home-info { 
+  flex: 1; 
+  min-width: 360px; 
+  max-width: 700px; 
+  display: flex; 
+  flex-direction: column; 
+  justify-content: center; 
+}
+
+.home-title { 
+  font-size: 3rem; 
+  font-weight: 700; 
+  line-height: 1.2; 
+  margin-bottom: 0.4rem; 
+}
+
+.home-name { 
+  background: linear-gradient(90deg, var(--accent), var(--accent-2), var(--accent)); 
+  -webkit-background-clip: text; 
+  color: transparent; 
+  background-size: 200%; 
+  display: inline-block; 
+}
+
+.typing-effect { 
+  font-size: 1.2rem; 
+  color: rgba(255,255,255,0.85); 
+  margin-top: 0.4rem; 
+  max-width: 95%; 
+  display: inline-block; 
+  overflow: hidden; 
+  white-space: nowrap; 
+  border-right: 0.15em solid var(--accent); 
+  animation: typing 3.5s steps(40,end) forwards, blink .8s infinite; 
+}
 
 /* Profession Tags */
-.profession-tags { display: flex; flex-wrap: wrap; gap: 0.8rem; margin-top: 1.4rem; }
-.profession-tag { border: 1px solid var(--accent); padding: 8px 16px; border-radius: 20px; font-size: 0.95rem; color: rgba(255,255,255,0.85); cursor: default; background: rgba(255,255,255,0.05); }
+.profession-tags { 
+  display: flex; 
+  flex-wrap: wrap; 
+  gap: 0.8rem; 
+  margin-top: 1.4rem; 
+}
+
+.profession-tag { 
+  border: 1px solid var(--accent); 
+  padding: 8px 16px; 
+  border-radius: 20px; 
+  font-size: 0.95rem; 
+  color: rgba(255,255,255,0.85); 
+  cursor: default; 
+  background: rgba(255,255,255,0.05); 
+}
 
 /* Info Cards */
-.info-cards { display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 1.2rem; }
-.info-card { background: rgba(255,255,255,0.05); border-radius: 12px; padding: 12px 18px; min-width: 180px; text-align: center; box-shadow: 0 0 10px rgba(0,255,200,0.08); }
-.info-card p { font-size: 0.9rem; color: rgba(255,255,255,0.7); margin-top: 4px; }
-
-/* Quick Links */
-.quick-links { text-align: center; margin-top: 1.2rem; }
-.quick-links h2 { font-size: 1.4rem; margin-bottom: 0.5rem; }
-.quick-links-list { display: flex; flex-wrap: wrap; justify-content: center; gap: 22px; }
-.quick-link-img { width: 50px; height: 50px; border-radius: 50%; object-fit: cover; filter: brightness(0.9); transition: all 0.3s ease; }
-
-.quick-links {
-  display: flex;
-  flex-direction: column;
-  align-items: center; /* centers everything horizontally */
-  gap: 1rem;
-  margin-top: 3rem;
+.info-cards { 
+  display: flex; 
+  gap: 1rem; 
+  flex-wrap: wrap; 
+  margin-top: 1.2rem; 
 }
 
-.quick-links-title {
-  font-size: 1.5rem;
-  font-weight: 600;
-  color: #fff;
-}
-
-.quick-links-list {
-  display: flex;
-  gap: 1.5rem;
-  justify-content: center; /* ensures icons are centered */
-}
-/* Typing cursor */
-.typing-cursor {
-  display: inline-block;
-  width: 2px;
-  height: 1em;
-  background: var(--accent);
-  margin-left: 4px;
-  animation: blink 1s infinite;
-}
-
-@keyframes blink {
-  50% { opacity: 0; }
-}
-
-/* Info cards hover / touch */
-.info-card {
+.info-card { 
+  background: rgba(255,255,255,0.05); 
+  border-radius: 12px; 
+  padding: 12px 18px; 
+  min-width: 180px; 
+  text-align: center; 
+  box-shadow: 0 0 10px rgba(0,255,200,0.08); 
   transition: all 0.35s ease;
   cursor: pointer;
+}
+
+.info-card p { 
+  font-size: 0.9rem; 
+  color: rgba(255,255,255,0.7); 
+  margin-top: 4px; 
 }
 
 .info-card:hover {
@@ -99,12 +153,127 @@
   color: #000;
 }
 
-/* Social icons hover glow */
-.quick-link-img {
-  transition: all 0.3s ease;
+/* Quick Links */
+.quick-links {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 3rem;
+  text-align: center;
+}
+
+.quick-links-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #fff;
+}
+
+.quick-links-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.5rem;
+}
+
+.quick-link-img { 
+  width: 50px; 
+  height: 50px; 
+  border-radius: 50%; 
+  object-fit: cover; 
+  filter: brightness(0.9); 
+  transition: all 0.3s ease; 
 }
 
 .quick-link-img:hover {
   transform: translateY(-6px) scale(1.08);
   box-shadow: 0 0 22px rgba(0,255,200,0.6);
+}
+
+.typing-cursor {
+  display: inline-block;
+  width: 2px;
+  height: 1em;
+  background: var(--accent);
+  margin-left: 4px;
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  50% { opacity: 0; }
+}
+
+/* =========================================
+   RESPONSIVE DESIGN (MEDIA QUERIES)
+========================================= */
+
+/* Tablet & Smaller Laptops */
+@media screen and (max-width: 1024px) {
+  .home-top {
+    justify-content: center;
+    text-align: center;
+  }
+  
+  .home-info {
+    align-items: center; /* Centers the profession tags and info cards */
+    min-width: auto; /* Allow shrinking */
+  }
+
+  .profession-tags, .info-cards {
+    justify-content: center;
+  }
+}
+
+/* Mobile Devices */
+@media screen and (max-width: 768px) {
+  .home-section {
+    padding: 2rem 1rem; /* Reduce padding */
+    gap: 2rem;
+  }
+
+  .home-top {
+    flex-direction: column; /* Stack photo and text */
+    gap: 1.5rem;
+  }
+
+  /* Shrink photo size */
+  .photo-container {
+    flex: 0 0 auto;
+    width: 280px;
+    height: 280px;
+  }
+
+  .photo-ring {
+    width: 260px;
+    height: 260px;
+  }
+
+  .photo-frame {
+    width: 240px;
+    height: 240px;
+  }
+
+  .home-title {
+    font-size: 2rem; /* Smaller title */
+  }
+
+  .typing-effect {
+    font-size: 1rem;
+    white-space: normal; /* Allow wrapping on very small screens */
+    border-right: none; /* Remove cursor border if wrapping */
+  }
+  
+  .home-info {
+    width: 100%;
+    min-width: unset;
+  }
+
+  .info-cards {
+    flex-direction: column; /* Stack info cards on small mobile */
+    width: 100%;
+  }
+
+  .info-card {
+    width: 100%;
+  }
 }

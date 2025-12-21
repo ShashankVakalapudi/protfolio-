@@ -1,3 +1,5 @@
+/* src/CSS/Contact.css */
+
 :root {
   --accent: #00b4ff;
   --accent-2: #00ffe0;
@@ -89,4 +91,15 @@
   margin-top: 10px;
   color: #0ff;
   font-weight: 500;
+}
+
+/* Responsive */
+@media screen and (max-width: 600px) {
+  .contact-title {
+    font-size: 2rem;
+  }
+  
+  .contact-subtitle {
+    font-size: 1rem;
+  }
 }

@@ -1,27 +1,34 @@
-/* Projects.css */
+/* src/CSS/projects.css */
 
 .projects-container {
   padding: 30px;
   background: rgba(255,255,255,0.03);
   border-radius: 16px;
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
 }
 
 .projects-title {
-  font-size: 2.5rem; /* text-4xl */
+  font-size: 2.5rem; 
   font-weight: 600;
-  color: #06b6d4; /* cyan-400 */
+  color: #06b6d4; 
   margin-bottom: 0.5rem;
+  text-align: center;
 }
 
 .projects-subtitle {
-  color: #9aa0a6; /* text-gray-400 */
+  color: #9aa0a6; 
   margin-bottom: 2.5rem;
+  text-align: center;
 }
 
 .projects-grid {
   display: grid;
   gap: 24px;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  /* Changed minmax to 280px to fit smaller phones */
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+  justify-content: center;
 }
 
 .project-card {
@@ -106,4 +113,15 @@
 .live-btn {
   background: linear-gradient(90deg, #06b6d4, #0891b2);
   color: #fff;
+}
+
+/* Mobile Adjustments */
+@media screen and (max-width: 480px) {
+  .projects-container {
+    padding: 15px;
+  }
+  
+  .projects-title {
+    font-size: 2rem;
+  }
 }
