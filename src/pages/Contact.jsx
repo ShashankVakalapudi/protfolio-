@@ -64,9 +64,9 @@ export default function Contact() {
   };
 
   const quickLinks = [
-  { img: githubLogo, title: "GitHub", link: "https://github.com/vaishu0803" },
-  { img: linkedinLogo, title: "LinkedIn", link: "https://www.linkedin.com/in/vaishnaviyenumula" },
-  { img: gmailLogo, title: "Email", link: "mailto:vaishuyenumula@gmail.com" },
+  { img: githubLogo, title: "GitHub", link: "https://github.com/ShashankVakalapudi"},
+  { img: linkedinLogo, title: "LinkedIn", link: "https://www.linkedin.com/in/vakalapudi-shashank/" },
+  { img: gmailLogo, title: "Email", link: "mailto:vakalapudishashank19@gmail.com" },
 ];
 
   return (
