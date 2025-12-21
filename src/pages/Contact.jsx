@@ -6,8 +6,8 @@ import githubLogo from "../../public/github.png";
 import linkedinLogo from "../../public/linkedin.png";
 import gmailLogo from "../../public/gmail.png";
 
-import "../CSS/Contact.css"
-import '../index.css' 
+import "../CSS/Contact.css";
+import "../index.css";
 
 export default function Contact() {
   const [form, setForm] = useState({
@@ -39,35 +39,53 @@ export default function Contact() {
 
     setStatus("Sending...");
 
+    const templateParams = {
+      from_name: form.name,
+      contact_info: form.contact,
+      subject: form.subject,
+      message: form.message,
+    };
+
+    // --- STEP 1: Send Notification to YOU ---
     emailjs
       .send(
         import.meta.env.VITE_EMAILJS_SERVICE_ID,
         import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
-        {
-          from_name: form.name,
-          contact_info: form.contact,
-          subject: form.subject,
-          message: form.message,
-        },
+        templateParams,
         import.meta.env.VITE_EMAILJS_PUBLIC_KEY
       )
       .then(
         () => {
+          // Success! Show message immediately
           setStatus("✅ Message sent successfully!");
           setForm({ name: "", contact: "", subject: "", message: "" });
+          console.log("✅ Main notification sent.");
+
+          // --- STEP 2: Send Auto-Reply to CLIENT (Background) ---
+          if (isEmail) {
+            emailjs.send(
+                import.meta.env.VITE_EMAILJS_SERVICE_ID,
+                import.meta.env.VITE_EMAILJS_AUTOREPLY_TEMPLATE_ID,
+                templateParams,
+                import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+              )
+              .then(() => console.log("✅ Auto-reply sent successfully."))
+              .catch((err) => console.error("❌ Auto-reply failed (Check Dashboard 'To Email'):", err));
+          }
         },
         (error) => {
+          // Only triggers if the MAIN email fails
           console.error("FAILED...", error);
-          setStatus("❌ Failed to send. Try again later.");
+          setStatus("❌ Failed to send. Please check your connection.");
         }
       );
   };
 
   const quickLinks = [
-  { img: githubLogo, title: "GitHub", link: "https://github.com/ShashankVakalapudi"},
-  { img: linkedinLogo, title: "LinkedIn", link: "https://www.linkedin.com/in/vakalapudi-shashank/" },
-  { img: gmailLogo, title: "Email", link: "mailto:vakalapudishashank19@gmail.com" },
-];
+    { img: githubLogo, title: "GitHub", link: "https://github.com/ShashankVakalapudi" },
+    { img: linkedinLogo, title: "LinkedIn", link: "https://www.linkedin.com/in/vakalapudi-shashank/" },
+    { img: gmailLogo, title: "Email", link: "mailto:vakalapudishashank19@gmail.com" },
+  ];
 
   return (
     <section className="contact-section">
@@ -132,7 +150,16 @@ export default function Contact() {
           🚀 Send Message
         </motion.button>
 
-        {status && <motion.p initial={{ opacity: 0, y: 5 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.3 }} className="contact-status">{status}</motion.p>}
+        {status && (
+          <motion.p
+            initial={{ opacity: 0, y: 5 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.3 }}
+            className="contact-status"
+          >
+            {status}
+          </motion.p>
+        )}
       </motion.form>
     </section>
   );
